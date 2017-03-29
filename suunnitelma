@@ -1,0 +1,10 @@
+Project Plan - Liekki Kämmen
+
+Projektin tavoitteet
+Ryhmätyön tavoitteena on luoda Javascriptillä toteutettu www-sovellus. Sovelluksessa ylläpitäjä lataa kuvia ja käyttäjät voivat selata kuvia ja ladata niitä.
+
+Käytetyt työkalut
+Tietokanta toteutetaan JSON:lla MangoDB:seen ja tarvittava palvelintila löytyy GitHubista. Projektissa käytetään versionhallintana GitHubia ja ohjelmointitehtävien allokointi tehdään Trellon kautta. Sivusta tullaan tekemään responsiivinen käyttäen HTML5 ja CSS. Käyttämämme lisäkirjasto on AngularJS, jota tulemme hyödyntämään kuvapankin käyttöliittymässä.
+
+Miten sivu toimii
+Käytännössä sivu toimisi niin, että ylläpitäjä kirjautuu järjestelmään sisään, lataa paikalliselta koneeltaan palvelimelle kuvia ja lisää näihin hakusanoja/"tägejä", joilla käyttäjä voi etsiä kyseisiä kuvia (voi myös selata valmiita kategorioita). Käyttäjä pystyy filtteröimään eri näkymiä (kuinka paljon ruudulla on kuvia, onko ne listattu, onko niissä pikkukuva) ja lataamaan myös itse kuvia paikalliselle laitteelleen.
