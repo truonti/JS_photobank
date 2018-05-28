@@ -2,29 +2,29 @@
 <html>
 <head>
 	<meta charset="utf-8">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/tyylit.css">
     <link rel="stylesheet" type="text/css" href="css/isonaytto.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
 
-		<script type="text/javascript" src="js/imageappender.js"></script>
-		<script src="js/search-engine.js"></script>
-		<script src="js/admin-login.js"></script>
+    <script type="text/javascript" src="js/imageappender.js"></script>
 		<script src="js/menubutton.js"></script>
 
-
-    <title>Vulkanuksen Kuvagalleria</title>
+  <title>Vulkanuksen Kuvagalleria</title>
 </head>
 
 <body ng-app="mainApp" ng-cloak>
 
 <header role="banner">
 <div class="dropdown">
-<button onclick="menuFunction()" class="dropbtn">Menu</button>
+<button onclick="menuFunction()" class="dropbtn">Valikko</button>
   <div id="menuDropdown" class="dropdown-content">
     <a href="index.html">Etusivu</a>
     <a href="yhteystiedot.html">Yhteystiedot</a>
@@ -36,30 +36,24 @@
 </header>
 <div id="fullpage">
 
-	<div class="main-search">
+	<div id="image-gallery" ng-controller="ImageView">
 
-		<div ng-controller="ImageSearch">
-			<h1 id="main-header">Vulkanuksen Kuvagalleria</h1>
-			<p>Kuvahaku</p>
-
-			<input ng-model="query.description" placeholder="Etsi kuvia">
-			<ul ng-show="query">
-			 	<li ng-repeat="image in images | filter:query">{{image.description}}</li>
-			</ul>
+		<div id="searchInput">
+			<h1>Kuvahaku</h1>
+			<input id="search" ng-model="query" placeholder="Etsi kuvia">
 		</div>
 
-	 </div>
+			<input type="button" value="Sulje Esikatselu" id="imagehidebtn" ng-click="closeImage()"/>
 
-	<div id="image-gallery" ng-controller="ImageView">
-		<h3>{{currentImage.filename}}</h3>
-	    <div id="current-image" class="currentimage">
+	    <div id="current-image" class="currentimage" ng-click="imgHighlight()">
 	        <img ng-src="{{currentImage.image}}" alt="{{currentImage.description}}">
 	    </div>
+
 	    <div id="thumnails">
-	        <ul id="thumbnail-list">
+	        <ul id="thumbnail-list" ng-show="query">
 						<!--Klikatessa thumbnailia ajetaan setCurrentImage() @ imageappender.js
 								ng-repeat toistaa <li>-elementin jokaiselle kuvalle images-taulukossa -->
-	            <li class="repeatedthumbnail" ng-repeat="image in images" ng-click="setCurrentImage(image)">
+	            <li class="repeatedthumbnail" ng-repeat="image in images | filter:{description:query}" ng-click="setCurrentImage(image)">
 	                <img ng-src="{{image.image}}" alt="{{image.description}}" />
 	            </li>
 	        </ul>
@@ -70,6 +64,12 @@
 			<div ng-view></div>
 		</div>
 
+    <div id="errordialog" title="Vulkanus on huolissaan;" hidden>
+      <p><span class="ui-icon ui-icon-alert"></span>Väärä tunnus tai salasana!</p>
+      <img src="images/errorvulkanus.png" />
+    </div>
+
 	</div>
+	<div id="page-cover"></div>
 </body>
 </html>

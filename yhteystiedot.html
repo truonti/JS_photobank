@@ -3,13 +3,16 @@
 <head>
 <meta charset="utf-8">
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/tyylit.css">
 <link rel="stylesheet" type="text/css" href="css/isonaytto.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
-<script src="js/admin-login.js"></script>
+
 <script src="js/menubutton.js"></script>
 <script type="text/javascript" src="js/yhteystiedot.js"></script>
 
@@ -26,35 +29,38 @@
 
 	<header role="banner">
 		<div class="dropdown">
-		<button onclick="menuFunction()" class="dropbtn">Menu</button>
+		<button onclick="menuFunction()" class="dropbtn">Valikko</button>
 		  <div id="menuDropdown" class="dropdown-content">
 		    <a href="index.html">Etusivu</a>
 		    <a href="yhteystiedot.html">Yhteystiedot</a>
+
 		  </div>
 		</div>
 		<input type="button" id="loginButton" value="Kirjaudu" />
 	</header>
 
-	<div class="main-search">
-	<h1 id="main-header">Yhteystiedot</h1>
-  </div>
   <div class="contact-info" id="contact-info" ng-controller="InfoView">
-	<button class="mobnav-item" id="teemu">Teemu Ruonti</button>
-	<button class="mobnav-item" id="antti">Antti Pakkanen</button>
-	<button class="mobnav-item" id="arttu">Arttu Seppä-Lassila</button>
-	<button class="mobnav-item" id="ilari">Ilari Nikander</button>
-
-    <p id="hlö" class="teemu">{{contacts[0].name}}<br>{{contacts[0].phone}}<br>{{contacts[0].email}}</p>
-	<p id="hlö" class="antti">{{contacts[1].name}}<br>{{contacts[1].phone}}<br>{{contacts[1].email}}</p>
-	<p id="hlö" class="arttu">{{contacts[2].name}}<br>{{contacts[2].phone}}<br>{{contacts[2].email}}</p>
-	<p id="hlö" class="ilari">{{contacts[3].name}}<br>{{contacts[3].phone}}<br>{{contacts[3].email}}</p>
-
+		<button class="yhteysbtn" value = "teemu" id="teemu">Teemu Ruonti</button><br>
+		<p id="hlö" class="teemu">{{contacts[0].name}}<br>{{contacts[0].phone}}<br>{{contacts[0].email}}</p>
+		<button class="yhteysbtn" value = "antti" id="antti">Antti Pakkanen</button><br>
+		<p id="hlö" class="antti">{{contacts[1].name}}<br>{{contacts[1].phone}}<br>{{contacts[1].email}}</p>
+		<button class="yhteysbtn" value = "arttu" id="arttu">Arttu Seppä-Lassila</button><br>
+		<p id="hlö" class="arttu">{{contacts[2].name}}<br>{{contacts[2].phone}}<br>{{contacts[2].email}}</p>
+		<button class="yhteysbtn" value ="ilari" id="ilari">Ilari Nikander</button><br>
+		<p id="hlö" class="ilari">{{contacts[3].name}}<br>{{contacts[3].phone}}<br>{{contacts[3].email}}</p>
   </div>
-</div>
+
+</div> <!-- fullpage -->
 
 <div id="login-window" hidden>
 	<div ng-view></div>
 </div>
+
+<div id="errordialog" title="Vulkanus on huolissaan;" hidden>
+	<p><span class="ui-icon ui-icon-alert"></span>Väärä tunnus tai salasana!</p>
+	<img src="images/errorvulkanus.png" />
+</div>
+
 
 </body>
 </html>
